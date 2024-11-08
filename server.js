@@ -6,7 +6,12 @@ const mongoose = require('mongoose');
 
 // SQL CONNECTION
 // TO DO: connect to mysql with the host, database, user, and password. 
-//const connection = ...uncomment this and finish the rest 
+const connection = mysql.createConnection( {
+    host: 'localhost',
+    user: 'root',
+    password: 'Tennis0817*',
+    database: 'company_database'
+});
 
 // MySQL Connection Verification
 function verifyMySQLConnection() {
@@ -21,10 +26,18 @@ function verifyMySQLConnection() {
 
 // MONGOOSE CONNECTION
 // TODO: connect to your local host on the companyDB collection
+mongoose.connect('mongodb://localhost: 27017/companyDB', { //connects to a MongoDB database named companyDB running on localhost at port 27017
+    useNewURLParser: True, //ensures that Mongoose reads the connection URL correctly
+    useUnifiedTopology: True //helps Mongoose connect and stay connected to MongoDB more smoothly by enabling a new way for Mongoose to manage connections to MongoDB
+});
 
 // TODO: Mongoose Schema and Model
-//const ProjectScheme = ...uncomment this and finish the rest
-// const Project Model = ... uncomment this and finish the rest
+const ProjectSchema = new mongoose.Schema({ //defines the structure for a MongoDB document in the "projects" collection. In other words, it states that each document in this project will have a "name" field and a "budget" field 
+    name: String, //each project will have a "name" field that is a string
+    budget: Number //each project will have a "budget" field that is a number
+});
+
+const ProjectModel = mongoose.model('Project', ProjectSchema);  //Provides a way to interact with the "projects" collection based on the defined schema
 
 // MongoDB Connection Verification 
 mongoose.connection.on('connected', () => {
