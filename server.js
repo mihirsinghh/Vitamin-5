@@ -26,9 +26,9 @@ function verifyMySQLConnection() {
 
 // MONGOOSE CONNECTION
 // TODO: connect to your local host on the companyDB collection
-mongoose.connect('mongodb://localhost: 27017/companyDB', { //connects to a MongoDB database named companyDB running on localhost at port 27017
-    useNewURLParser: True, //ensures that Mongoose reads the connection URL correctly
-    useUnifiedTopology: True //helps Mongoose connect and stay connected to MongoDB more smoothly by enabling a new way for Mongoose to manage connections to MongoDB
+mongoose.connect('mongodb://localhost:27017/companyDB', { //connects to a MongoDB database named companyDB running on localhost at port 27017
+    useNewURLParser: true, //ensures that Mongoose reads the connection URL correctly
+    useUnifiedTopology: true //helps Mongoose connect and stay connected to MongoDB more smoothly by enabling a new way for Mongoose to manage connections to MongoDB
 });
 
 // TODO: Mongoose Schema and Model
